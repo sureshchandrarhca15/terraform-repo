@@ -1,4 +1,4 @@
-gcp_credentials   		    = "../../../../../../river-formula-385606-56175784614c.json"
+gcp_credentials   		    = "../../../../../river-formula-385606-56175784614c.json" 
 gcp_project_id    		    = "river-formula-385606"
 gcp_region        		    = "us-west1"
 gcp_zones	  		        = ["us-west1-a", "us-west1-b", "us-west1-c"]

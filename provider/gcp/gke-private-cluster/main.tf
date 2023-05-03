@@ -1,5 +1,6 @@
 module "gke" {
   source                     = "terraform-google-modules/kubernetes-engine/google//modules/private-cluster"
+#  version                    = "2.12.0"
   project_id                 = var.gcp_project_id
   region                     = var.gcp_region
   zones                      = var.gcp_zones
@@ -40,9 +41,10 @@ module "gke" {
   ]
 
   node_pools_oauth_scopes = {
-    all = [
-      "https://www.googleapis.com/auth/logging.write",
-      "https://www.googleapis.com/auth/monitoring",
+    all = []
+
+    default-node-pool = [
+      "https://www.googleapis.com/auth/cloud-platform",
     ]
   }
 

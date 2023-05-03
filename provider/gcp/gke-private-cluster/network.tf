@@ -1,6 +1,6 @@
 module "vpc" {
     source  = "terraform-google-modules/network/google//modules/vpc"
-    version = "~> 3.4.0"
+#    version = "~> 3.4.0"
 
     project_id   = var.gcp_project_id
     network_name = var.gke_network
@@ -9,7 +9,7 @@ module "vpc" {
 
 module "subnet" {
     source  = "terraform-google-modules/network/google//modules/subnets"
-    version = "~> 3.4.0"
+#    version = "~> 3.4.0"
 
     project_id   = var.gcp_project_id
     network_name = var.gke_network
@@ -23,7 +23,7 @@ module "subnet" {
     ]
 
     secondary_ranges = {
-        var.gke_subnetwork = [
+        (var.gke_subnetwork) = [
             {
                 range_name    = "pods-address"
                 ip_cidr_range = "10.7.0.0/20"

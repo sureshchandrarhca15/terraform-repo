@@ -1,11 +1,9 @@
 terraform {
-  backend "etcdv3" {
-    endpoints = ["192.168.1.56:2379"]
-    lock      = true
-    prefix    = "gke-private-cluster/terraform-state/" 
-  }
+  backend "gcs" {
+     bucket  = "9a37e56f1d061ec2-bucket-tfstate"
+     prefix  = "terraform/state"
+ }
 }
-
 
 data "google_client_config" "default" {}
 
