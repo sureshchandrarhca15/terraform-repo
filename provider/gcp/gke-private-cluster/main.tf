@@ -78,3 +78,14 @@ module "gke" {
 
   depends_on = [ module.subnet ]
 }
+
+// Create a Kubernetes namespace for each name in the list
+resource "kubernetes_namespace" "namespaces" {
+  for_each = { for name in var.gke_namespace_names : name => name }
+
+  metadata {
+    name = each.value
+  }
+
+  #depends_on = [module.gke]
+}
